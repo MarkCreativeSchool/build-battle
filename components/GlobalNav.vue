@@ -1,5 +1,5 @@
 <template>
-  <div>マイクラカップ練習</div>
+  <div class="g-nav">マイクラカップ練習</div>
 </template>
 
 <script>
@@ -8,4 +8,14 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.g-nav {
+  background: #5caeb5;
+  color: #fff;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+</style>

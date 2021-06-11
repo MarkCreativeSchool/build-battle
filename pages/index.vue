@@ -1,11 +1,11 @@
 <template>
-  <section>
-    ああああ
+  <section class="section">
+    <div class="container">
+
+    </div>
   </section>
 </template>
 
 <script>
-export default {
-  name: 'HomePage',
-}
+export default {}
 </script>

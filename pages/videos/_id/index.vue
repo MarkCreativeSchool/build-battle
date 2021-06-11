@@ -5,22 +5,24 @@
         <h1 class="title is-5">{{ video.title }}</h1>
         <div class="video"></div>
         <hr />
-        <form @submit.prevent="onSubmit">
-          <div class="field">
-            <textarea class="textarea"></textarea>
-          </div>
-          <div class="field">
-            <button class="button is-primary">送信</button>
-          </div>
-        </form>
-        <hr>
+        <div v-if="name">
+          <form @submit.prevent="onSubmit">
+            <div class="field">
+              <textarea v-model="comment" class="textarea"></textarea>
+            </div>
+            <div class="field">
+              <button class="button is-primary">送信</button>
+            </div>
+          </form>
+          <hr>
+        </div>
         <div v-if="comments.length === 0">
           まだコメントがありません
         </div>
-        <ul v-else>
+        <ul v-else class="comments">
           <li v-for="(c, index) of comments" :key="`c-${index}`">
-            <div>{{ c.name }}</div>
-            <div>{{ c.comment }}</div>
+            <div class="name">{{ c.name }}</div>
+            <div class="comment">{{ c.comment }}</div>
           </li>
         </ul>
       </div>
@@ -29,6 +31,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 import firebase from "~/plugins/firebase"
 const db = firebase.firestore()
 
@@ -39,8 +42,14 @@ export default {
       video: {
         title: "",
       },
+      comment: "",
       comments: [],
     }
+  },
+  computed: {
+    ...mapGetters({
+      name: "user/name",
+    })
   },
   async mounted() {
     await this.fetchData()
@@ -65,8 +74,10 @@ export default {
     },
     async onSubmit() {
       const commentRef = db.collection("videos").doc(this.id).collection("comments")
-      commentRef.add({ name: "なまえ", comment: "コメント" })
+      commentRef.add({ name: this.name, comment: this.comment })
+      this.comment = ""
       alert("コメントを送信しました")
+      await this.fetchComment()
     }
   }
 }
@@ -77,5 +88,21 @@ export default {
   width: 100%;
   height: 320px;
   background: #000;
+}
+.comments {
+  li {
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    &:last-child {
+      border-bottom: none;
+    }
+    .name {
+      font-weight: bold;
+    }
+    .comment {
+      white-space: pre-wrap;
+    }
+  }
 }
 </style>

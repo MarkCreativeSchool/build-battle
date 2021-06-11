@@ -5,14 +5,30 @@
     </div>
     <div>マイクラカップ練習</div>
     <div>
-      <nuxt-link to="/login"><i class="las la-user-lock"></i></nuxt-link>
+      <span v-if="name" @click="logout"><i class="las la-sign-in-alt"></i></span>
+      <nuxt-link v-else to="/login"><i class="las la-user-lock"></i></nuxt-link>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 export default {
-  name: "GlobalNav"
+  name: "GlobalNav",
+  computed: {
+    ...mapGetters({
+      name: "user/name",
+    })
+  },
+  methods: {
+    logout() {
+      if (window.confirm("ログアウトしますか？")) {
+        this.$cookies.removeAll()
+        this.$store.commit("user/setName", "")
+        alert("ログアウトしました")
+      }
+    }
+  },
 }
 </script>
 
@@ -31,6 +47,7 @@ export default {
   }
   i {
     font-size: 24px;
+    cursor: pointer;
   }
 }
 </style>

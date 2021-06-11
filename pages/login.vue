@@ -30,10 +30,17 @@ export default {
   data() {
     return {
       isLoginFail: false,
-      userId: "1234",
-      password: "1234",
+      userId: "",
+      password: "",
       users: [
-        { name: "ゆーき", id: "1234", pass: "1234" }
+        { name: "ゆーき", id: "1234", pass: "1234" },
+        { name: "かいと", id: "1234", pass: "1234" },
+        { name: "そうすけ", id: "1234", pass: "1234" },
+        { name: "ゆうき", id: "1234", pass: "1234" },
+        { name: "たくや", id: "1234", pass: "1234" },
+        { name: "ゆうしん", id: "1234", pass: "1234" },
+        { name: "まさひろ", id: "1234", pass: "1234" },
+        { name: "けいご", id: "1234", pass: "1234" },
       ]
     }
   },

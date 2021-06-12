@@ -33,14 +33,14 @@ export default {
       userId: "",
       password: "",
       users: [
-        { name: "ゆーき", id: "1234", pass: "1234" },
-        { name: "かいと", id: "1234", pass: "1234" },
-        { name: "そうすけ", id: "1234", pass: "1234" },
-        { name: "ゆうき", id: "1234", pass: "1234" },
-        { name: "たくや", id: "1234", pass: "1234" },
-        { name: "ゆうしん", id: "1234", pass: "1234" },
-        { name: "まさひろ", id: "1234", pass: "1234" },
-        { name: "けいご", id: "1234", pass: "1234" },
+        { name: "ゆーき", id: "yuki.s", pass: "1234" },
+        { name: "かいと", id: "kaito.k", pass: "1234" },
+        { name: "そうすけ", id: "sosuke.s", pass: "1234" },
+        { name: "ゆうき", id: "yuki.n", pass: "1234" },
+        { name: "たくや", id: "takuya.e", pass: "1234" },
+        { name: "ゆうしん", id: "yushin.m", pass: "1234" },
+        { name: "まさひろ", id: "masahiro.s", pass: "1234" },
+        { name: "けいご", id: "keigo.s", pass: "1234" },
       ]
     }
   },

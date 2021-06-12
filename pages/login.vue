@@ -41,6 +41,7 @@ export default {
         { name: "ゆうしん", id: "yushin.m", pass: "1234" },
         { name: "まさひろ", id: "masahiro.s", pass: "1234" },
         { name: "けいご", id: "keigo.s", pass: "1234" },
+        { name: "あると", id: "aruto.m", pass: "1234" },
       ]
     }
   },

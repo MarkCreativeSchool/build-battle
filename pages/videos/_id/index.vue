@@ -2,8 +2,16 @@
   <div>
     <section class="section">
       <div class="container">
+        <div class="notification is-warning is-light">
+          Wifi環境でご覧ください
+        </div>
         <h1 class="title is-5">{{ video.title }}</h1>
-        <div class="video"></div>
+        <div v-if="video.video">
+          <video :src="video.video" controls class="player" />
+        </div>
+        <div v-else>
+          <div class="video"></div>
+        </div>
         <hr />
         <div v-if="name">
           <form @submit.prevent="onSubmit">
@@ -41,6 +49,7 @@ export default {
       id: this.$route.params.id,
       video: {
         title: "",
+        video: "",
       },
       comment: "",
       comments: [],
@@ -61,6 +70,7 @@ export default {
       const videoDoc = await videoRef.get()
       const video = videoDoc.data()
       this.video = video
+      console.log(video)
     },
     async fetchComment() {
       const commentRef = db.collection("videos").doc(this.id).collection("comments")
@@ -84,9 +94,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.section {
+  max-width: 640px;
+  margin: 0 auto;
+}
 .video {
   width: 100%;
   height: 320px;
+  background: #000;
+}
+.player {
+  width: 100%;
   background: #000;
 }
 .comments {

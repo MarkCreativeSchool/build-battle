@@ -1,11 +1,15 @@
 <template>
   <section class="section">
     <div class="container">
-      <div class="columns is-mobile">
-        <div v-for="(v, index) of videos" :key="`v-${index}`">
-          <nuxt-link :to="`/videos/${v.id}`">
-            {{ v.title }}
-          </nuxt-link>
+      <div class="columns is-mobile is-multiline">
+        <div v-for="(v, index) of videos" :key="`v-${index}`" class="column is-12">
+          <div class="card">
+            <div class="card-content">
+              <nuxt-link :to="`/videos/${v.id}`">
+                {{ v.title }}
+              </nuxt-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -39,3 +43,10 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.section {
+  max-width: 640px;
+  margin: 0 auto;
+}
+</style>
